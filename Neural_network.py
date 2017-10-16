@@ -19,18 +19,11 @@ def sigmoid(x, deriv=False):
 
 
 # input Data set
-X = np.array([[0, 0, 1],
-              [0, 1, 1],
-              [1, 0, 1],
-              [1, 1, 1],
-              [1, 1, 0],
-              [0, 1, 0],
-              [0, 0, 0],
-              [1, 1, 0]]).T
+X = np.loadtxt("data.txt").T   # read input file
 
 # ground label Truth or output
 
-y = np.array([[1, 1, 1, 1, 0, 0, 0, 0]])
+y = np.loadtxt("ans.txt")    #read ans
 
 # seeding random numbers
 
@@ -48,11 +41,12 @@ for iter in xrange(10000):
     z1 = np.dot(w1, X) + b1  # z1(1,4)
     a1 = sigmoid(z1)            #predicated value
 
+    m=np.shape(X)[1]      #calc no of test cases automatically , here dimension of X is returned 
     # backward propogation
-    print 'ERROR : ', np.sum(y-a1)/4
+    print 'ERROR : ', np.sum(y-a1)/m
     dz1 = a1 - y  # derivative
-    dw1 = np.dot(dz1, X.T)/4                # For w1
-    db1 = np.sum(dz1,axis=1,keepdims=True)/4     #For b1
+    dw1 = np.dot(dz1, X.T)/m                # For w1
+    db1 = np.sum(dz1,axis=1,keepdims=True)/m     #For b1
 
     w1 = w1 - alpha * dw1    #Gradient Descent
     b1 = b1 - alpha * db1
@@ -64,7 +58,7 @@ x = np.array([[1],[0],[0]])
 z1 = np.dot(w1, x) + b1  # z1(1,4)
 a1 = sigmoid(z1)
 print
-print 'Predicted Value : ', np.sum(a1)
+print 'Predicted Value : ', a1  # why were you summing?
 
 
 # Output is checked :)
