@@ -58,7 +58,7 @@ x = np.array([[1],[0],[0]])
 z1 = np.dot(w1, x) + b1  # z1(1,4)
 a1 = sigmoid(z1)
 print
-print 'Predicted Value : ', a1  # why were you summing?
+print 'Predicted Value : ', a1[0][0] 
 
 
 # Output is checked :)
