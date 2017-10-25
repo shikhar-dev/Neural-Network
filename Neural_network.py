@@ -11,7 +11,6 @@ import numpy as np
 #   ->o            layer
 #   ->o
 #   ->o             o  --- > Y'
-#   ->o
 def sigmoid(x, deriv=False):
     if (deriv == True):
         return x * (1 - x)
